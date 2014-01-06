@@ -18,8 +18,18 @@ angular.module('project', ['ngRoute', 'firebase'])
 	});
 })
 
-.controller('ListCtrl', function($scope, Projects) {
+.controller('ListCtrl', function($scope, $location, Projects, $firebase, fbURL) {
 	$scope.projects = Projects;
+
+	$scope.edit = function(projectId) {
+		$location.path('/edit/'+id);
+	}
+
+	$scope.delete = function(projectId) {
+		var projectUrl = fbURL + projectId;
+		$scope.project = $firebase(new Firebase(projectUrl));
+		$scope.project.$remove();
+	}
 })
 
 .controller('CreateCtrl', function($scope, $location, $timeout, Projects) {
