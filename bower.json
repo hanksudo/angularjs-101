@@ -1,0 +1,16 @@
+{
+  "name": "angularjs-101",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.7"
+  }
+}
