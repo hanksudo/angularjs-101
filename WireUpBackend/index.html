@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="project">
+<head>
+	<meta charset="UTF-8">
+	<title>Wire up a Backend</title>
+	<link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="page-header">
+                    <h2>JavaScript Projects</h2>
+                </div>
+                <div ng-view></div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
+
+<script src="../vendor/angular/angular.js"></script>
+<script src="../vendor/angular-route/angular-route.min.js"></script>
+<!-- <script src="../vendor/angular-resource/angular-resource.min.js"></script> -->
+<script src="../vendor/firebase/lib/firebase.js"></script>
+<script src="../vendor/angularfire/angularfire.min.js"></script>
+<script src="../js/project.js"></script>
+</body>
+</html>
