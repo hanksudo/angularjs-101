@@ -1,0 +1,7 @@
+.container {
+	max-width: 300px;
+}
+.done-true {
+	text-decoration: line-through;
+	color: grey;
+}
