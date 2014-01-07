@@ -16,6 +16,7 @@
     "angular-resource": "~1.2.7",
     "angularfire": "~0.5.0",
     "firebase": "~1.0.1",
-    "angular-route": "~1.2.7"
+    "angular-route": "~1.2.7",
+    "angular-i18n": "~1.2.7"
   }
 }
