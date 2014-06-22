@@ -1,0 +1,23 @@
+<section>
+    <ul class="nav nav-tabs">
+        <li ng-class="{ active: panel.isSet(1) }">
+            <a href ng-click="panel.setTab(1)">Description</a>
+        </li>
+        <li ng-class="{ active: panel.isSet(2) }">
+            <a href ng-click="panel.setTab(2)">Specifications</a>
+        </li>
+        <li ng-class="{ active: panel.isSet(3) }">
+            <a href ng-click="panel.setTab(3)">Reviews</a>
+        </li>
+    </ul>
+    <div class="panel" ng-show="panel.isSet(1)">
+        <h4>Description</h4>
+        <p>{{product.description}}</p>
+    </div>
+    <div class="panel" ng-show="panel.isSet(2)">
+        <h4>Specifications</h4>
+        <blockquote>None Yet</blockquote>
+    </div>
+    <div class="panel" ng-show="panel.isSet(3)" ng-include="'product-review.html'">
+    </div>
+</section>

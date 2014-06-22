@@ -1,22 +1,11 @@
 (function() {
-    var app = angular.module('gemStore', []);
-
-    app.controller('PanelController', function() {
-        this.tab = 1;
-
-        this.setTab = function(tab) {
-            this.tab = tab;
-        };
-
-        this.isSet = function(tab) {
-            return this.tab === tab;
-        };
-    });
+    var app = angular.module('store', ['store-products']);
 
     app.controller('ReviewController', function() {
         this.review = {};
 
         this.addReview = function(product) {
+            this.review.createdOn = Date.now();
             product.reviews.push(this.review);
             this.review = {};
         };

@@ -1,11 +1,19 @@
 <!doctype html>
-<html ng-app="gemStore">
+<html ng-app="store">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Amazing Store</title>
 
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+    .ng-invalid.ng-dirty {
+        border-color: #FA787E;
+    }
+    .ng-valid.ng-dirty {
+        border-color: #78FA89;
+    }
+    </style>
 </head>
 <body ng-controller="StoreController as store">
 
@@ -14,59 +22,9 @@
     <div class="col-sm-6 col-sm-offset-3">
         <div class="list-group" ng-repeat="product in store.products">
             <div class="list-group-item">
-                <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
-
-                <p ng-show="product.image"><img ng-src="{{product.image}}" height="160px"></p>
-                <section ng-controller="PanelController as panel">
-                    <ul class="nav nav-tabs">
-                        <li ng-class="{ active: panel.isSet(1) }">
-                            <a href ng-click="panel.setTab(1)">Description</a>
-                        </li>
-                        <li ng-class="{ active: panel.isSet(2) }">
-                            <a href ng-click="panel.setTab(2)">Specifications</a>
-                        </li>
-                        <li ng-class="{ active: panel.isSet(3) }">
-                            <a href ng-click="panel.setTab(3)">Reviews</a>
-                        </li>
-                    </ul>
-                    <div class="panel" ng-show="panel.isSet(1)">
-                        <h4>Description</h4>
-                        <p>{{product.description}}</p>
-                    </div>
-                    <div class="panel" ng-show="panel.isSet(2)">
-                        <h4>Specifications</h4>
-                        <blockquote>None Yet</blockquote>
-                    </div>
-                    <div class="panel" ng-show="panel.isSet(3)">
-                        <h4>Reviews</h4>
-                        <blockquote ng-repeat="review in product.reviews">
-                            <b>{{review.stars}} Stars</b>
-                            {{ review.bogudy }}
-                            <cite class="clearfix">—{{ review.author }}</cite>
-                        </blockquote>
-                        <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
-                            <blockquote>
-                                <b>{{ reviewCtrl.review.stars }} Stars</b>
-                                {{ reviewCtrl.review.body }}
-                                <cite class="clearfix">—{{ reviewCtrl.review.author }}</cite>
-                            </blockquote>
-                            <fieldset class="form-group">
-                                <select class="form-control" ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5, 4, 3, 2, 1]">
-                                    <option value="">Rate the product</option>
-                                </select>
-                            </fieldset>
-                            <fieldset class="form-group">
-                                <textarea class="form-control" ng-model="reviewCtrl.review.body"></textarea>
-                            </fieldset>
-                            <fieldset class="form-group">
-                                <input class="form-control" ng-model="reviewCtrl.review.author" type="email" placeholder="youremail@email.com">
-                            </fieldset>
-                            <fieldset class="form-group">
-                                <input class="btn btn-success pull-right" type="submit" value="Submit Review">
-                            </fieldset>
-                        </form>
-                    </div>
-                </section>
+                <product-title></product-title>
+                <product-gallery></product-gallery>
+                <product-panels></product-panels>
                 <div class="form-group">
                     <button class="btn btn-warning" ng-disabled="product.canPurchase">Want It!</button>
                     <button class="btn btn-danger" ng-disabled="product.soldOut">Add to Cart</button>
@@ -78,5 +36,6 @@
 
 <script src="vendor/angular/angular.min.js"></script>
 <script src="js/store.js"></script>
+<script src="js/store-products.js"></script>
 </body>
 </html>
